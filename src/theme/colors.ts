@@ -1,5 +1,5 @@
 export const darkColors = {
-  primary: '#ffffffff',
+  primary: '#007377',
   Black: '#1A1A1A',
   black_lite: 'rgba(0, 0, 0, 0.5)',
   white: '#fff',
@@ -8,7 +8,7 @@ export const darkColors = {
 
   transparent: 'transparent',
 
-  background_lite: 'rgba(242, 243, 247, 0.9)',
+  background_lite: 'rgba(11, 11, 12, 0.9)',
   gray_dark: '#808080',
   gray_lite: '#E7E7E7',
   textFieldBorder: '#E8ECF0',
@@ -55,4 +55,4 @@ export const lightColors = {
   disabledColor: '#F5F5F5',
 };
 
-export const COLORS = {light: lightColors, dark: darkColors};
+export const COLORS = { light: lightColors, dark: darkColors };

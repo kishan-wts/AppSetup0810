@@ -1,13 +1,14 @@
-import {COLORS} from '@/theme';
+import { useColorTheme } from '@/hooks/useColorTheme';
+import { COLORS } from '@/theme';
 import React from 'react';
-import {View, StyleSheet, StatusBar} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { View, StyleSheet, StatusBar } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function BaseContainer({
   children,
   isTopSafeArea = true,
   isBottomSafeArea = true,
-  bgColor = COLORS.light.background_lite,
+  bgColor = useColorTheme().background_lite,
   headerBGColor = COLORS.light.white,
   bottomSafeColor = bgColor,
 }) {
@@ -20,7 +21,8 @@ export default function BaseContainer({
           isTopSafeArea,
           isBottomSafeArea,
           bgColor,
-        )}>
+        )}
+      >
         {children}
       </View>
       {isTopSafeArea ? (

@@ -1,13 +1,13 @@
-import {Appearance, Platform, useColorScheme} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer} from '@react-navigation/native';
+import { Appearance, Platform, useColorScheme } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-import {globalNavigationRef} from '../utils/helper-navigation';
-import {SCREEN} from '../constants/screen-name';
-import {useDispatch, useSelector} from 'react-redux';
+import { globalNavigationRef } from '../utils/helper-navigation';
+import { SCREEN } from '../constants/screen-name';
+import { useDispatch, useSelector } from 'react-redux';
 import NetInfo from '@react-native-community/netinfo';
-import {show_log} from '../constants/logger';
+import { show_log } from '../constants/logger';
 import DeviceInfo from 'react-native-device-info';
 
 import {
@@ -16,8 +16,8 @@ import {
   toggleNetState,
 } from '../redux/reducers/netInfo-reducer';
 
-import {setColorScheme} from '../redux/reducers/color-theme-reducer';
-import {LandingScreen} from '@/screens/general';
+import { setColorScheme } from '../redux/reducers/color-theme-reducer';
+import { LandingScreen } from '@/screens/general';
 import BottomTab from './navigation-bottom-tab/bottom-tab';
 import { NoInternet } from '@/components/utilities';
 
@@ -26,6 +26,7 @@ const Route = () => {
   const dispatch = useDispatch();
   const isUserLogIn = useSelector(v => v?.userInfoReducer?.isUserLogin);
   const [connected, setConnected] = useState(true);
+  const colorScheme = Appearance.getColorScheme();
 
   useEffect(() => {
     setColorToStore();
@@ -53,7 +54,7 @@ const Route = () => {
 
     // Appearance (color scheme) listener
     const colorSchemeListener = Appearance.addChangeListener(
-      ({colorScheme}) => {
+      ({ colorScheme }) => {
         dispatch(setColorScheme(colorScheme)); // store in Redux or state
       },
     );
@@ -65,7 +66,6 @@ const Route = () => {
   }, []);
 
   function setColorToStore() {
-    const colorScheme = Appearance.getColorScheme();
     dispatch(setColorScheme(colorScheme));
   }
 
@@ -94,7 +94,8 @@ const Route = () => {
     <NavigationContainer ref={globalNavigationRef}>
       <Stack.Navigator
         initialRouteName={SCREEN.bottomTab}
-        screenOptions={{headerShown: false, gestureEnabled: false}}>
+        screenOptions={{ headerShown: false, gestureEnabled: false }}
+      >
         <Stack.Screen name={SCREEN.landingScreen} component={LandingScreen} />
         <Stack.Screen name={SCREEN.bottomTab} component={BottomTab} />
       </Stack.Navigator>
