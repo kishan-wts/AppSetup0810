@@ -2,7 +2,7 @@
 import React from 'react';
 import { Text, TextProps, StyleSheet, TextStyle } from 'react-native';
 import { FONTS, FONT_SIZE } from '@theme/typography';
-import { COLORS } from '@/theme';
+import { useColorTheme } from '@/context';
 
 type FontWeight = keyof typeof FONTS;
 type FontSize = keyof typeof FONT_SIZE;
@@ -17,7 +17,7 @@ interface AppTextProps extends TextProps {
 export default function AppText({
   fontFamily = 'Regular',
   size = 14,
-  color = COLORS.light.Black, // fallback to default text color
+  color = useColorTheme().Black, // fallback to default text color
   style,
   children,
   ...rest

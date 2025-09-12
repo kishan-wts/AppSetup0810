@@ -13,6 +13,7 @@ import { persistedStore, store } from '@/redux/store/store';
 import Toast from 'react-native-toast-message';
 import { toastConfig } from '@/utils';
 import Route from '@/routes/routes';
+import { ColorThemeProvider } from '@/context';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -20,15 +21,17 @@ function App(): React.JSX.Element {
   const barStyle = isDarkMode ? 'light-content' : 'dark-content';
 
   return (
-    <GestureHandlerRootView style={styles.mainContainer}>
-      <StoreProvider store={store}>
-        <PersistGate persistor={persistedStore} loading={null}>
-          <StatusBar barStyle={barStyle} />
-          <Route />
-          <Toast config={toastConfig} />
-        </PersistGate>
-      </StoreProvider>
-    </GestureHandlerRootView>
+    <ColorThemeProvider>
+      <GestureHandlerRootView style={styles.mainContainer}>
+        <StoreProvider store={store}>
+          <PersistGate persistor={persistedStore} loading={null}>
+            <StatusBar barStyle={barStyle} />
+            <Route />
+            <Toast config={toastConfig} />
+          </PersistGate>
+        </StoreProvider>
+      </GestureHandlerRootView>
+    </ColorThemeProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-export const darkColors = {
+const darkColors = {
   primary: '#007377',
   Black: '#1A1A1A',
   black_lite: 'rgba(0, 0, 0, 0.5)',
@@ -26,7 +26,7 @@ export const darkColors = {
   sheetBg: 'rgba(0,0,0,0.3)',
   disabledColor: '#F5F5F5',
 };
-export const lightColors = {
+const lightColors = {
   primary: '#007377',
   Black: '#1A1A1A',
   black_lite: 'rgba(0, 0, 0, 0.5)',

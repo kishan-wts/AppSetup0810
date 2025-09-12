@@ -10,6 +10,7 @@ module.exports = {
           '@': './src',
           '@components': './src/components',
           '@constants': './src/constants',
+          '@context': './src/context',
           '@hooks': './src/hooks',
           '@localization': './src/localization',
           '@redux': './src/redux',

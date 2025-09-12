@@ -1,4 +1,4 @@
-import { useColorTheme } from '@/hooks/useColorTheme';
+import { useColorTheme } from '@/context';
 import { COLORS } from '@/theme';
 import React from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
