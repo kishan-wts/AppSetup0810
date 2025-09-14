@@ -5,8 +5,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import BaseContainer from '../base-container';
 import { NoInternetSvgComponent } from '@/assets/svg';
 import AppText from '../app-text/app-text';
-import { COLORS } from '@/theme';
 import LocalizeText from '@/localization/text-localize';
+import { useAppTheme } from '@/context';
 
 type NoInternetType = {};
 
@@ -17,15 +17,31 @@ const NoInternet: React.FC<NoInternetType> = ({}) => {
   return (
     <SafeAreaProvider>
       <BaseContainer>
-        <View style={styles.container}>
-          <View style={styles.subContainer}>
+        <View
+          style={{
+            ...styles.container,
+            backgroundColor: useAppTheme().colors.primary,
+          }}
+        >
+          <View
+            style={{
+              ...styles.subContainer,
+              backgroundColor: useAppTheme().colors.white,
+            }}
+          >
             <NoInternetSvgComponent />
 
-            <AppText color={COLORS.light.primary} style={styles.textTitle}>
+            <AppText
+              color={useAppTheme().colors.primary}
+              style={styles.textTitle}
+            >
               {labels.networkUnavailable}
             </AppText>
 
-            <AppText style={styles.textSubTitle} color={COLORS.light.colorRed}>
+            <AppText
+              style={styles.textSubTitle}
+              color={useAppTheme().colors.colorRed}
+            >
               {labels.checkInternetConnection}
             </AppText>
           </View>

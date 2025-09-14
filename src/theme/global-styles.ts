@@ -1,8 +1,7 @@
-import {moderateScale} from 'react-native-size-matters';
-
-import {normalizeText} from '../utils/responsive-text';
-import {COLORS} from './colors';
-import {FONTS} from './typography';
+import { moderateScale } from 'react-native-size-matters';
+import { normalizeText } from '../utils/responsive-text';
+import { FONTS } from './typography';
+import { useAppTheme } from '@/context';
 
 const ACTIVE_OPACITY = 0.85;
 
@@ -24,15 +23,17 @@ const RADIUS = {
 };
 const GLOBAL_PADDING = getModerateScaleValue(15);
 const TEXT_FIELD_HEIGHT = getModerateScaleValue(40);
-const BORDER_STYLE = (
-  borderWidth = getModerateScaleValue(1),
-  borderColor = COLORS.light.gray_lite,
-  borderRadius = RADIUS.RADIUS_10,
-) => ({
-  borderWidth,
-  borderColor,
-  borderRadius,
-});
+const BORDER_STYLE =
+  (COLORS = useAppTheme().colors) =>
+  (
+    borderWidth = getModerateScaleValue(1),
+    borderColor = COLORS.gray_lite,
+    borderRadius = RADIUS.RADIUS_10,
+  ) => ({
+    borderWidth,
+    borderColor,
+    borderRadius,
+  });
 
 const MARGIN_LEFT = (v = 0) => ({
   marginLeft: getModerateScaleValue(v),
@@ -46,11 +47,11 @@ function getModerateScaleValue(value = 0) {
   return moderateScale(value);
 }
 
-const GLOBAL_STYLES = {
-  SPACING_5: {height: SPACING.SPACE_5},
-  SPACING_10: {height: SPACING.SPACE_10},
-  SPACING_15: {height: SPACING.SPACE_15},
-  SPACING_20: {height: SPACING.SPACE_20},
+const GLOBAL_STYLES = (COLORS = useAppTheme().colors) => ({
+  SPACING_5: { height: SPACING.SPACE_5 },
+  SPACING_10: { height: SPACING.SPACE_10 },
+  SPACING_15: { height: SPACING.SPACE_15 },
+  SPACING_20: { height: SPACING.SPACE_20 },
   HEADER_HEIGHT: getModerateScaleValue(50),
   SHEET_HEADER_STYLE: {
     height: getModerateScaleValue(50),
@@ -59,10 +60,10 @@ const GLOBAL_STYLES = {
     justifyContent: 'space-between',
     paddingHorizontal: getModerateScaleValue(15),
     flexDirection: 'row',
-    backgroundColor: COLORS.light.white,
+    backgroundColor: COLORS.white,
     elevation: 4,
 
-    shadowColor: COLORS.light.Black,
+    shadowColor: COLORS.Black,
     shadowOffset: {
       width: -5,
       height: 5,
@@ -71,65 +72,71 @@ const GLOBAL_STYLES = {
     shadowOpacity: 0.152,
     shadowRadius: 2.5,
   },
-};
+});
 
-export const AWESOME_CANCEL_BTN_STYLE = {
-  borderColor: COLORS.light.primary,
+export const AWESOME_CANCEL_BTN_STYLE = (COLORS = useAppTheme().colors) => ({
+  borderColor: COLORS.primary,
   borderWidth: getModerateScaleValue(1),
   height: getModerateScaleValue(40),
   width: '48%',
   paddingHorizontal: getModerateScaleValue(20),
   alignItem: 'center',
   justifyContent: 'center',
-  backgroundColor: COLORS.light.white,
+  backgroundColor: COLORS.white,
   borderRadius: getModerateScaleValue(25),
-};
-export const AWESOME_CONFIRM_BTN_STYLE = {
+});
+export const AWESOME_CONFIRM_BTN_STYLE = (COLORS = useAppTheme().colors) => ({
   height: getModerateScaleValue(40),
   width: '48%',
   paddingHorizontal: getModerateScaleValue(20),
   alignItem: 'center',
   justifyContent: 'center',
   borderRadius: getModerateScaleValue(25),
-};
-export const AWESOME_TITLE_STYLE = {
+});
+export const AWESOME_TITLE_STYLE = (COLORS = useAppTheme().colors) => ({
   fontFamily: FONTS.Medium,
   textAlign: 'center',
   fontSize: normalizeText(18),
-  color: COLORS.light.primary,
-};
-export const AWESOME_MESSAGE_STYLE = {
+  color: COLORS.primary,
+});
+export const AWESOME_MESSAGE_STYLE = (COLORS = useAppTheme().colors) => ({
   fontFamily: FONTS.Medium,
   textAlign: 'center',
   fontSize: normalizeText(14),
   paddingTop: 0,
-};
-export const AWESOME_CONTENT_CONTAINER_STYLE = {
+});
+export const AWESOME_CONTENT_CONTAINER_STYLE = (
+  COLORS = useAppTheme().colors,
+) => ({
   // width: screenWidth,
   paddingBottom: getModerateScaleValue(10),
   paddingHorizontal: getModerateScaleValue(10),
   borderRadius: SPACING.SPACE_10,
-};
-export const AWESOME_CONFIRM_BUTTON_TEXT_STYLE = {
+});
+export const AWESOME_CONFIRM_BUTTON_TEXT_STYLE = (
+  COLORS = useAppTheme().colors,
+) => ({
   fontFamily: FONTS.Medium,
   textAlign: 'center',
   fontSize: normalizeText(12),
-};
-export const AWESOME_CANCEL_BUTTON_TEXT_STYLE = {
+});
+export const AWESOME_CANCEL_BUTTON_TEXT_STYLE = (
+  COLORS = useAppTheme().colors,
+) => ({
   fontFamily: FONTS.Medium,
-  color: COLORS.light.Black,
+  color: COLORS.Black,
   textAlign: 'center',
   fontSize: normalizeText(12),
-};
+});
 
-export const ACTIVE_STYLE_ACTION_FIELD = {
+export const ACTIVE_STYLE_ACTION_FIELD = (COLORS = useAppTheme().colors) => ({
   marginHorizontal: SPACING.SPACE_15,
-  color: COLORS.light.Black,
-};
-export const INACTIVE_STYLE_ACTION_FIELD = {
+  color: COLORS.Black,
+});
+export const INACTIVE_STYLE_ACTION_FIELD = (COLORS = useAppTheme().colors) => ({
   marginHorizontal: SPACING.SPACE_15,
-  color: COLORS.light.textColorGray768188,
-};
+  color: COLORS.textColorGray768188,
+});
 
 interface RgbToRgbaWithOpacity {
   (rgbString: string, opacity?: number): string;
@@ -167,7 +174,7 @@ const hexToRgbaWihOpacity: hexToRgbaWihOpacity = (hex, opacity = '100%') => {
   return `rgba(${r}, ${g}, ${b}, ${percentageToDecimal(opacity)})`;
 };
 
-const TRANSPARENT_LOADER = {
+const TRANSPARENT_LOADER = (COLORS = useAppTheme().colors) => ({
   flex: 1,
   position: 'absolute',
   top: 0,
@@ -177,8 +184,8 @@ const TRANSPARENT_LOADER = {
   zIndex: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: hexToRgbaWihOpacity(COLORS.light.sheetBackground, '50%'),
-};
+  backgroundColor: hexToRgbaWihOpacity(COLORS.sheetBackground, '50%'),
+});
 
 /**
  * Export variables

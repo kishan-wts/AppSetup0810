@@ -1,30 +1,33 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import * as RnToast from 'react-native-toast-message';
-import {getModerateScaleValue} from '@/theme/global-styles';
-import { COLORS } from '@/theme/colors';
+import { getModerateScaleValue } from '@/theme/global-styles';
 import { normalizeText } from './responsive-text';
 import { FONTS } from '@/theme';
-
-
-
+import { useAppTheme } from '@/context';
 
 // return null
 export const toastConfig = {
   success: props => (
     <RnToast.BaseToast
       {...props}
-      style={styles.container(COLORS.colorGreen00CE6B, COLORS.tagColor4)}
+      style={styles.container(
+        useAppTheme().colors.primary,
+        useAppTheme().colors.white,
+      )}
       text1NumberOfLines={0}
-      text1Style={styles.text1Style(COLORS.light.primary)}
+      text1Style={styles.text1Style(useAppTheme().colors.primary)}
     />
   ),
   error: props => (
     <RnToast.BaseToast
       {...props}
-      style={styles.container(COLORS.colorRed, COLORS.colorF5E6E4)}
+      style={styles.container(
+        useAppTheme().colors.colorRed,
+        useAppTheme().colors.white,
+      )}
       text1NumberOfLines={0}
-      text1Style={styles.text1Style(COLORS.light.primary)}
+      text1Style={styles.text1Style(useAppTheme().colors.primary)}
     />
   ),
   info: props => (
@@ -38,17 +41,17 @@ export const toastConfig = {
 };
 
 const styles = StyleSheet.create({
-  container: (color, color2) => ({
+  container: (color = useAppTheme().primary, color2 = useAppTheme().white) => ({
     height: 'auto',
     width: '85%',
-    borderLeftColor: color ? color : COLORS.light.primary,
+    borderLeftColor: color,
     paddingVertical: getModerateScaleValue(10),
-    backgroundColor: color2 ? color2 : COLORS.light.white,
+    backgroundColor: color2,
   }),
   text1Style: color => ({
     fontFamily: FONTS.Medium,
     fontSize: normalizeText(11),
-    color: color ? color : COLORS.light.Black,
+    color: color,
     letterSpacing: 0.5,
     marginVertical: getModerateScaleValue(0.5),
   }),

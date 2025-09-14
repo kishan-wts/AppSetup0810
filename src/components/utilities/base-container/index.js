@@ -1,5 +1,4 @@
-import { useColorTheme } from '@/context';
-import { COLORS } from '@/theme';
+import { useAppTheme } from '@/context';
 import React from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,8 +7,8 @@ export default function BaseContainer({
   children,
   isTopSafeArea = true,
   isBottomSafeArea = true,
-  bgColor = useColorTheme().background_lite,
-  headerBGColor = COLORS.light.white,
+  bgColor = useAppTheme().colors.background_lite,
+  headerBGColor = useAppTheme().colors.white,
   bottomSafeColor = bgColor,
 }) {
   const inset = useSafeAreaInsets();

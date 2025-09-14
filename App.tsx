@@ -3,7 +3,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { StatusBar, StyleSheet, useColorScheme } from 'react-native';
 import { Provider as StoreProvider } from 'react-redux';
@@ -13,7 +13,7 @@ import { persistedStore, store } from '@/redux/store/store';
 import Toast from 'react-native-toast-message';
 import { toastConfig } from '@/utils';
 import Route from '@/routes/routes';
-import { ColorThemeProvider } from '@/context';
+import { ThemeProvider } from '@/context';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -21,7 +21,7 @@ function App(): React.JSX.Element {
   const barStyle = isDarkMode ? 'light-content' : 'dark-content';
 
   return (
-    <ColorThemeProvider>
+    <ThemeProvider>
       <GestureHandlerRootView style={styles.mainContainer}>
         <StoreProvider store={store}>
           <PersistGate persistor={persistedStore} loading={null}>
@@ -31,7 +31,7 @@ function App(): React.JSX.Element {
           </PersistGate>
         </StoreProvider>
       </GestureHandlerRootView>
-    </ColorThemeProvider>
+    </ThemeProvider>
   );
 }
 

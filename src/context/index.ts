@@ -1,1 +1,1 @@
-export * from './colorThemeProvider';
+export * from './app-theme-context';

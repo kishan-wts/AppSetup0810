@@ -1,8 +1,8 @@
 import {StyleSheet, useColorScheme, View} from 'react-native';
 import React from 'react';
 import {scale} from 'react-native-size-matters';
-import {COLORS} from '@/theme';
 import AppText from '../app-text/app-text';
+import { useAppTheme } from '@/context';
 
 type TabLabelProps = {
   value: string;
@@ -10,13 +10,12 @@ type TabLabelProps = {
 };
 
 const TabLabel = ({value, focused}: TabLabelProps) => {
-  const colorScheme = useColorScheme() || 'light';
   return (
     <View style={styles.mainContainer}>
       <AppText
-        weight="Medium"
+        fontFamily="Medium"
         size={14}
-        color={COLORS[colorScheme].white}
+        color={useAppTheme().colors.white}
         numberOfLines={1}
         style={styles.labelStyle}>
         {value}

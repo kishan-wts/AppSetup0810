@@ -1,6 +1,6 @@
 const darkColors = {
   primary: '#007377',
-  Black: '#1A1A1A',
+  Black: 'rgba(193, 193, 193, 1)',
   black_lite: 'rgba(0, 0, 0, 0.5)',
   white: '#fff',
   white_lite: 'rgba(232, 236, 240, 1)',
@@ -8,7 +8,7 @@ const darkColors = {
 
   transparent: 'transparent',
 
-  background_lite: 'rgba(11, 11, 12, 0.9)',
+  background_lite: 'rgba(0, 0, 0, 0.9)',
   gray_dark: '#808080',
   gray_lite: '#E7E7E7',
   textFieldBorder: '#E8ECF0',

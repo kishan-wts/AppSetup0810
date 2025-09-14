@@ -2,13 +2,13 @@ import { View } from 'react-native';
 import React from 'react';
 import { AppText, BaseContainer } from '@/components/utilities';
 import styles from './home-screen-styles';
-import { useColorTheme } from '@/context';
+import { useAppTheme } from '@/context';
 
 export default function HomeScreen() {
-  const COLORS = useColorTheme();
+  const COLORS = useAppTheme().colors;
 
   return (
-    <BaseContainer bgColor={COLORS.primary} isBottomSafeArea={false}>
+    <BaseContainer  isBottomSafeArea={false}>
       <View style={styles.container}>
         <AppText fontFamily="Light" size={14} color={COLORS.Black}>
           Text-Light-14

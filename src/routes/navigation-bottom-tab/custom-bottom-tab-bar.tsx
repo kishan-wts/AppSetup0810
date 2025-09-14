@@ -9,9 +9,10 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { COLORS, SPACING } from '@/theme';
+import { SPACING } from '@/theme';
 import { TabLabel } from '@/components/utilities';
 import { moderateScale } from 'react-native-size-matters';
+import { useAppTheme } from '@/context';
 
 let dotSize = moderateScale(6);
 
@@ -41,7 +42,10 @@ const TabButton: React.FC<TabButtonProps> = ({
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={1}
-      style={[styles.touchableView, { backgroundColor: COLORS.light.primary }]}
+      style={[
+        styles.touchableView,
+        { backgroundColor: useAppTheme().colors.primary },
+      ]}
     >
       {TabIcon && <TabIcon focused={focused} />}
       <TabLabel value={item?.label} focused={focused} />
@@ -84,6 +88,7 @@ const CustomBottomTabBar: React.FC<CustomBottomTabBarProps> = ({
             styles.indicator,
             {
               transform: [{ translateX }],
+              backgroundColor: useAppTheme().colors.white,
             },
           ]}
         />
@@ -132,6 +137,7 @@ const CustomBottomTabBar: React.FC<CustomBottomTabBarProps> = ({
               Platform.OS === 'android'
                 ? insets.bottom
                 : insets.bottom - SPACING.SPACE_10,
+            backgroundColor: useAppTheme().colors.primary,
           },
         ]}
       />
@@ -149,7 +155,6 @@ const styles = StyleSheet.create({
     borderRadius: dotSize,
     height: dotSize,
     width: dotSize,
-    backgroundColor: COLORS.light.white_lite_half,
     zIndex: 1,
   },
   touchableView: {
@@ -159,7 +164,6 @@ const styles = StyleSheet.create({
   },
   bottomWhiteView: {
     width: '100%',
-    backgroundColor: COLORS.light.primary,
   },
 });
 

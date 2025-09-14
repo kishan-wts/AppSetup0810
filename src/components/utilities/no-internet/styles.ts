@@ -1,19 +1,15 @@
-import { COLORS, SPACING } from '@/theme';
-import {StyleSheet} from 'react-native';
-
-
+import { SPACING } from '@/theme';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.light.primary,
     padding: SPACING.SPACE_15,
   },
   subContainer: {
     flex: 1,
     padding: SPACING.SPACE_15,
     borderRadius: SPACING.SPACE_15,
-    backgroundColor: COLORS.light.white,
     alignItems: 'center',
     justifyContent: 'center',
   },
