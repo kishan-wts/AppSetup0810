@@ -13,7 +13,7 @@ function BottomTab() {
   return (
     <>
       <Tab.Navigator
-        screenOptions={{ headerShown: false, animation: 'shift' }}
+        screenOptions={{ headerShown: false }}
         tabBar={props => <CustomBottomTabBar {...props} />}
       >
         <Tab.Screen
